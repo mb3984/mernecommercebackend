@@ -12,7 +12,12 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
-
+// ⚡ CORS configuration
+app.use(cors({
+  origin: "http://localhost:5173", // allow your frontend origin
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true
+}));
 // Connect DB
 connectDB(); // ✅ use it here
 
