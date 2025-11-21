@@ -1,0 +1,122 @@
+### ==============================
+### AUTH ROUTES
+### ==============================
+
+### Register a new user
+POST http://localhost:4000/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Test User",
+  "email": "user1@example.com",
+  "password": "User1234"
+}
+
+### Login as user
+POST http://localhost:4000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "user1@example.com",
+  "password": "User1234"
+}
+
+### Login as admin (after running seed)
+POST http://localhost:4000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@demo.com",
+  "password": "Admin1234"
+}
+
+
+### ==============================
+### PRODUCT ROUTES
+### ==============================
+
+### Get all products
+GET http://localhost:4000/api/products
+
+### Get product by ID
+GET http://localhost:4000/api/products/692027c6c1b4a8ac8904a0c6
+
+### Create new product (admin only)
+POST http://localhost:4000/api/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjAyNzg5YzFmMjMyNmI2MjAyNjU4OCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MzcxNTAwNCwiZXhwIjoxNzY0MzE5ODA0fQ.z2mSnGwqfAswi1Aoh3ksWg3560wpcGD7SLJGjcHt0K0
+Content-Type: application/json
+
+{
+  "title": "Demo T-Shirt",
+  "description": "Nice cotton tee",
+  "price": 499,
+  "imageUrl": "https://example.com/image.jpg"
+}
+###
+### Create new product (admin only)
+POST http://localhost:4000/api/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjAyNzg5YzFmMjMyNmI2MjAyNjU4OCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MzcxNTAwNCwiZXhwIjoxNzY0MzE5ODA0fQ.z2mSnGwqfAswi1Aoh3ksWg3560wpcGD7SLJGjcHt0K0
+Content-Type: application/json
+
+{
+  "title": "Watch",
+  "description": "Nice watch",
+  "price": 999,
+  "imageUrl": "https://example.com/image.jpg"
+}
+###
+POST http://localhost:4000/api/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjAyNzg5YzFmMjMyNmI2MjAyNjU4OCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MzcxNTAwNCwiZXhwIjoxNzY0MzE5ODA0fQ.z2mSnGwqfAswi1Aoh3ksWg3560wpcGD7SLJGjcHt0K0
+Content-Type: application/json
+
+{
+  "title": "radio",
+  "description": "Nice sound",
+  "price": 399,
+  "imageUrl": "https://example.com/image.jpg"
+}
+### Update a product (admin only)
+PUT http://localhost:4000/api/products/692027c6c1b4a8ac8904a0c6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjAyNzg5YzFmMjMyNmI2MjAyNjU4OCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MzcxNTAwNCwiZXhwIjoxNzY0MzE5ODA0fQ.z2mSnGwqfAswi1Aoh3ksWg3560wpcGD7SLJGjcHt0K0
+Content-Type: application/json
+
+{
+  "title": "Updated Demo T-Shirt",
+  "price": 599
+}
+
+### Delete a product (admin only)
+DELETE http://localhost:4000/api/products/692028bfc1b4a8ac8904a0cd
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjAyNzg5YzFmMjMyNmI2MjAyNjU4OCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MzcxNTAwNCwiZXhwIjoxNzY0MzE5ODA0fQ.z2mSnGwqfAswi1Aoh3ksWg3560wpcGD7SLJGjcHt0K0
+
+
+### ==============================
+### ORDER ROUTES
+### ==============================
+
+### Create an order (user)
+POST http://localhost:4000/api/orders
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjAyM2ViNzIwZjk2Y2E2ZDEyYzUzNSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzYzNzE1MzE3LCJleHAiOjE3NjQzMjAxMTd9.484mqnfOWJuoePbNFPX3auSV0gq0go2M3vZ56Gv2wFc
+Content-Type: application/json
+
+{
+  "items": [
+    {
+      "product": "692028a5c1b4a8ac8904a0cb",
+      "title": "Demo T-Shirt",
+      "price": 499,
+      "qty": 2,
+      "imageUrl": "https://example.com/image.jpg"
+    }
+  ],
+  "total": 998
+}
+
+### Get current user's orders
+GET http://localhost:4000/api/orders/my
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjAyM2ViNzIwZjk2Y2E2ZDEyYzUzNSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzYzNzE1MzE3LCJleHAiOjE3NjQzMjAxMTd9.484mqnfOWJuoePbNFPX3auSV0gq0go2M3vZ56Gv2wFc
+
+### Get all orders (admin)
+GET http://localhost:4000/api/orders
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MjAyNzg5YzFmMjMyNmI2MjAyNjU4OCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MzcxNTAwNCwiZXhwIjoxNzY0MzE5ODA0fQ.z2mSnGwqfAswi1Aoh3ksWg3560wpcGD7SLJGjcHt0K0
+
